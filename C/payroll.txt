@@ -1,0 +1,9 @@
+PAYROLL REPORT
+
+ Employee ID: 251-00378
+ Employee Name: Sherwin Alvin M. Manbiotan
+ Hours Worked: 500.00
+ Hours Rate: 380.00
+ Gross Pay: 190000.00
+ Tax: 19000.00
+ Net Pay: 171000.00
