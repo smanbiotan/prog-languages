@@ -1,0 +1,13 @@
+.video-title{
+  font-style: Arial;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 0;
+}  
+
+.video-hits{
+  font-size: 20px;
+  font-style: italic;
+  color: rgb(201, 64, 64);
+  margin-top: 0px;
+}
