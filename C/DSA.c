@@ -296,7 +296,7 @@ void reverseInPlace(int arr[], int n){
 
 /*
 // count even numbers
-#include <stdio.h>
+git stash pop#include <stdio.h>
 
 int countEven(int arr[], int n);
 
