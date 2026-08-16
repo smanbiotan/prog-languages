@@ -1,0 +1,569 @@
+/*
+// 1.
+#include <stdio.h>
+
+int main() {
+
+int  a = 10;
+int *p = &a;
+
+*p += 5;
+
+printf("%d", a);
+
+  return 0;
+}
+*/
+
+/*
+// 2.
+#include <stdio.h>
+
+int main() {
+
+int x = 7;
+int *p = &x;
+
+printf("%d\n", *p);
+
+  return 0;
+}
+*/
+
+/*
+// 3.
+#include <stdio.h>
+
+void increment(int *n){
+
+  *n += 1; // count = count + 1;
+}
+
+int main() {
+
+  int counts = 4;
+
+  increment(&counts);
+
+  printf("%d\n", counts);
+
+  return 0;
+}
+*/
+
+/*
+// 4
+#include <stdio.h>
+
+void swap(int *a, int *b) {
+
+int temp = *a;
+*a = *b;
+*b = temp;
+}
+
+int main(void) {
+
+int x = 3, y = 8;
+
+swap(&x, &y);
+
+printf("%d %d\n", x, y);
+
+return 0;
+
+}
+*/
+
+/*
+// 5
+#include <stdio.h>
+
+int main() {
+
+  int nums[4] = {2, 4, 6, 8};
+  int *p = nums;
+
+  int sum = 0;
+
+
+  while (p < nums + 4) { // p = 0, nums(0 + 4) 4 so mo loop ika 4;
+  sum += *p;      // 0 + 2 = 2;  2 + 4 = 6; 6 + 6 = 12; 12 + 8 = 20 sum;
+  p++;
+}
+
+printf("%d\n", sum); // 20
+
+  return 0;
+}
+*/
+
+/*
+#include <stdio.h>
+
+int *findMax(int *arr, int n) {
+
+  int *maxPtr = arr;
+
+  for(int *p = arr + 1; p < arr + n; p++) {
+      if(*p > *maxPtr){
+        maxPtr = p;
+      }
+  }
+  return maxPtr;
+}
+
+int main() {
+
+  int scores[6] = {88, 92, 79, 95, 84, 95};
+  int n = sizeof(scores) / sizeof(scores[0]);
+
+  int *max = findMax(scores, n);
+
+  printf("%d", *max);
+
+  return 0;
+}*/
+
+
+/*
+#include <stdio.h>
+
+void swap(int *a, int *b){
+   
+  int temp = *a;
+      *a =  *b;
+      *b = temp;
+}
+
+int main() {
+
+  int x = 10;
+  int y = 5;
+
+  printf("before swap: %d %d\n", x, y);
+
+  swap(&x, &y);
+
+  printf("after swapped: %d %d", x, y);
+
+
+  return 0;
+}
+*/
+
+/*
+#include <stdio.h>
+
+int main() {
+
+  int n; 
+  int nValue;
+  int largestValue;
+
+  printf("Enter N integer/s: ");
+  scanf("%d", &n);
+
+  if(n <= 0 || n > 100) {
+    printf("Invalid input...");
+    return 1;
+  }
+
+  for(int i = 0; i < n; i++) {
+    printf("Enter N integer/s value %d: ", i + 1);
+    scanf("%d", &nValue);
+
+        if(i == 0 || nValue > largestValue){
+        largestValue = nValue;
+    }
+
+  }
+
+  printf("\nLargest integer/s: %d", largestValue);
+
+  return 0;
+}
+*/
+
+/*
+#include <stdio.h>
+
+int main() {
+
+int n; 
+int nInteger;
+int countEven = 0;
+
+printf("Enter number/s of integers: ");
+scanf("%d", &n);
+
+
+if(n <= 0 || n > 100){
+  printf("Invalid input...");
+  return 1;
+} 
+for(int i = 0; i < n; i++) {
+  printf("Enter value of the integer %d: ", i + 1);
+  scanf("%d", &nInteger);
+
+  if(nInteger % 2 == 0) {
+    countEven++;
+  } 
+}
+
+printf("\nEven Integer/s: %d\n", countEven);
+
+  return 0;
+}
+*/
+
+/*
+#include <stdio.h>
+
+int getSum(int arr[], int i, int j);
+
+int main() {
+
+  int arr[] = {1, 2, 3, 4, 5};
+
+  printf("Sum: %d", getSum(arr, 1, 3));
+
+  return 0;
+}
+
+int getSum(int arr[], int i, int j){
+
+    int sum = 0;
+
+    sum += arr[i];
+    sum += arr[j];
+
+    return sum;
+}
+*/
+
+
+/*
+// swapping
+#include <stdio.h>
+
+void swap(int arr[], int i, int j);
+
+int main() {
+
+  int arr[] = {10, 20, 30, 40, 50};
+  int n = sizeof(arr) / sizeof(arr[0]);
+
+  printf("Before swap: ");
+  for(int i = 0; i < n; i++){
+      printf("%d ", arr[i]);
+  }
+  
+  swap(arr, 1, 3);
+
+  
+  printf("\nAfter swapped: ");
+    for(int i = 0; i < n; i++){
+      printf("%d ", arr[i]);
+  }
+
+  return 0;
+}
+
+void swap(int arr[], int i, int j){
+
+  int temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+}
+*/
+
+/*
+// Traverse
+#include <stdio.h>
+
+void traverse(int arr[], int n);
+
+int main() {
+
+  int arr[] = {10, 20, 30, 40, 50};
+  int n = sizeof(arr) / sizeof(arr[0]);\
+
+  printf("Array: ");
+  traverse(arr, n);
+
+  return 0;
+}
+
+void traverse(int arr[], int n){
+
+  for(int i = 0; i < n; i++) {
+    printf("%d ", arr[i]);
+  }
+}
+*/
+
+
+/*
+// Test II — CER
+#include <stdio.h>
+
+// Scenario: a function meant to copy the first n values of source into
+// a fixed-size buffer of 10 integers.
+void copyFirstN(int source[], int n, int buffer[10]) {
+    for (int i = 0; i < n; i++) {   // FIX: changed i <= n to i < n
+        buffer[i] = source[i];
+    }
+}
+
+int main(void) {
+    int data[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int buf[10];
+
+    copyFirstN(data, 10, buf);
+
+    printf("Copied buffer: ");
+    for (int i = 0; i < 10; i++) {
+        printf("%d ", buf[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+
+Claim: This program is not safe to run as written,
+it will cause a buffer overflow (undefined behavior), 
+corrupting memory beyond the bounds of both buf and data.
+
+Evidence:
+
+Loop condition i <= n runs 11 times (i = 0..10) instead of 10.
+buffer[10] only has valid indices 0–9, so buffer[10] = ... writes out of bounds.
+data[10] also only has valid indices 0–9, so source[10] reads out of bounds.
+
+Reasoning: This is an off-by-one bounds error — 
+for a size-10 array, the last valid index is 9, not 10, but <= lets the loop treat n itself as a valid index.
+That extra iteration reads garbage from outside data and writes it outside buf, both undefined behavior. 
+Fix: change i <= n to i < n.
+*/
+
+/*
+// 3. Rotation
+#include <stdio.h>
+
+void rotateLeft(int arr[], int n, int k) {
+    int i, j, temp;
+
+    if (n <= 0)
+        return;
+
+    k %= n;
+                   
+    for (i = 0, j = k - 1; i < j; i++, j--) {        // arr[] = {1, 2, 3, 4, 5}; k = 2;
+        temp = arr[i];     // temp = 1 value sa array   i = [0] which is value = 1, j = [1] which is value = 2
+        arr[i] = arr[j];   // arr[i] = 2               
+        arr[j] = temp;     // arr[j] = 1               // first traverse {2, 1, 3, 4, 5}
+    }
+
+    for (i = k, j = n - 1; i < j; i++, j--) {   // i = k which is (2); j = 5 - 1 which is = (4); 
+        temp = arr[i];        // temp = 3  value sa array   
+        arr[i] = arr[j];      // arr[i] = 5     
+        arr[j] = temp;        // arr[j] = 3     // second traverse {2, 1, 5, 4, 3}
+    }
+
+    for (i = 0, j = n - 1; i < j; i++, j--) {              // i = 0 which is value niya 2
+        temp = arr[i];    // temp = 2;   value sa array    // j = 5 - 1 which is = (4);              
+        arr[i] = arr[j];  // arr[i] = 3;
+        arr[j] = temp;    // arr[j] = 2;         // final traverse {3, 4, 5, 1, 2} so mao ni ang final result.
+    }                                                                                
+} 
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int k = 2;
+
+    rotateLeft(arr, n, k);
+
+    printf("Rotated array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+*/
+
+/*
+// 2. Insertion
+#include <stdio.h>
+
+void insertAt(int arr[], int *n, int cap, int pos, int value) {
+
+  if (*n >= cap) {
+        return;
+    }
+
+    if (pos < 0 || pos > *n) {
+        return;
+    }
+
+    for (int i = *n; i > pos; i--) {
+        arr[i] = arr[i - 1];
+    }
+    arr[pos] = value;
+    (*n)++;
+    return true;
+}
+
+int main(void) {
+    int arr[5] = {1, 2, 3, 4};
+    int n = 4;
+    int cap = 5;
+
+    printf("Before insert: ");
+    for (int i = 0; i < n; i++) printf("%d ", arr[i]);
+    printf("\n");
+
+    if (insertAt(arr, &n, cap, 1, 99)) {
+        printf("Inserted 99 at position 1\n");
+    } else {
+        printf("Insert failed\n");
+    }
+
+    printf("After insert: ");
+    for (int i = 0; i < n; i++) printf("%d ", arr[i]);
+    printf("\n");
+
+    if (!insertAt(arr, &n, cap, 2, 42)) {
+        printf("Insert rejected: array is full (n=%d, cap=%d)\n", n, cap);
+    }
+
+    if (!insertAt(arr, &n, cap, 10, 7)) {
+        printf("Insert rejected: invalid position\n");
+    }
+
+    return 0;
+}
+*/
+
+
+/*
+// 1. Rearrangement
+#include <stdio.h>
+
+int removeDuplicates(int arr[], int n);
+
+int main() {
+
+  int arr[] = {1, 3, 3, 2, 1, 5};
+  int n = sizeof(arr) / sizeof(arr[0]);
+
+  int newLen = removeDuplicates(arr, n);
+
+  for(int i = 0; i < newLen; i++){
+    printf("%d ", arr[i]);
+  }
+
+  return 0;
+}
+
+int removeDuplicates(int arr[], int n) {
+  int newLength = 0;
+
+  for(int i = 0; i < n; i++) { // sa outer loop i-check lang ang every element sa original array nimo.
+    int isDuplicate = 0;
+
+    for(int j = 0; j < newLength; j++) { 
+      if(arr[i] == arr[j]){ // i-check ang original array which is arr[i] kung na saved na saimong unique portion 
+        isDuplicate = 1;
+        break;
+      }
+    }
+
+    if(isDuplicate == 0){
+      arr[newLength] = arr[i];
+      newLength++;
+    }
+  }
+
+  return newLength;
+
+}
+*/
+
+
+/*
+// swapping
+#include <stdio.h>
+
+void reverseInPlace(int arr[], int n);
+
+int main() {
+
+  int arr[] = {1, 2, 3, 4, 5, 6, 9, -1};
+  int n = 8;
+
+  printf("Original values: ");
+  for(int i = 0; i < n; i++) {
+    printf("%d", arr[i]);
+  }
+
+  reverseInPlace(arr, n);
+
+  printf("\nReversed Values: ");
+    for(int i = 0; i < n; i++) {
+    printf("%d", arr[i]);
+  }
+
+return 0;
+
+}
+
+void reverseInPlace(int arr[], int n){
+
+    int left = 0;
+    int right = n - 1;
+    int temp;
+
+    while(left < right) {
+      
+      temp = arr[left];
+      arr[left] = arr[right];
+      arr[right] = temp;
+
+      left++;
+      right--;
+    }
+}
+*/
+
+
+/*
+// count even numbers
+git stash pop#include <stdio.h>
+
+int countEven(int arr[], int n);
+
+int main() {
+
+  int arr[] = {1, 2, 3, 4, 5, 6, 9, -1};
+  int n = 8;
+
+  printf("%d", countEven(arr, n));
+
+  return 0;
+}
+
+int countEven(int arr[], int n) {
+
+  int count = 0;
+
+  for(int i = 0; i < n; i++) {
+    if(arr[i] % 2 == 0) {
+      count++;
+    }
+  }
+    return count;
+}
+*/
