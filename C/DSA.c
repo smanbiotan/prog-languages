@@ -1,4 +1,65 @@
 /*
+// swapping
+#include <stdio.h>
+
+void swap(int arr[], int i, int j);
+
+int main() {
+
+  int arr[] = {10, 20, 30, 40, 50};
+  int n = sizeof(arr) / sizeof(arr[0]);
+
+  printf("Before swap: ");
+  for(int i = 0; i < n; i++){
+      printf("%d ", arr[i]);
+  }
+  
+  swap(arr, 1, 3);
+
+  
+  printf("\nAfter swapped: ");
+    for(int i = 0; i < n; i++){
+      printf("%d ", arr[i]);
+  }
+
+  return 0;
+}
+
+void swap(int arr[], int i, int j){
+
+  int temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+}
+*/
+
+/*
+// Traverse
+#include <stdio.h>
+
+void traverse(int arr[], int n);
+
+int main() {
+
+  int arr[] = {10, 20, 30, 40, 50};
+  int n = sizeof(arr) / sizeof(arr[0]);\
+
+  printf("Array: ");
+  traverse(arr, n);
+
+  return 0;
+}
+
+void traverse(int arr[], int n){
+
+  for(int i = 0; i < n; i++) {
+    printf("%d ", arr[i]);
+  }
+}
+*/
+
+
+/*
 // Test II — CER
 #include <stdio.h>
 
@@ -25,7 +86,9 @@ int main(void) {
     return 0;
 }
 
-Claim: Not safe — it overflows the buffer.
+Claim: This program is not safe to run as written,
+it will cause a buffer overflow (undefined behavior), 
+corrupting memory beyond the bounds of both buf and data.
 
 Evidence:
 
@@ -40,7 +103,7 @@ Fix: change i <= n to i < n.
 */
 
 /*
-// 3.
+// 3. Rotation
 #include <stdio.h>
 
 void rotateLeft(int arr[], int n, int k) {
@@ -49,7 +112,7 @@ void rotateLeft(int arr[], int n, int k) {
     if (n <= 0)
         return;
 
-    k = k % n;
+    k %= n;
                    
     for (i = 0, j = k - 1; i < j; i++, j--) {        // arr[] = {1, 2, 3, 4, 5}; k = 2;
         temp = arr[i];     // temp = 1 value sa array   i = [0] which is value = 1, j = [1] which is value = 2
@@ -87,17 +150,17 @@ int main() {
 */
 
 /*
-// 2.
+// 2. Insertion
 #include <stdio.h>
 
 void insertAt(int arr[], int *n, int cap, int pos, int value) {
 
   if (*n >= cap) {
-        return false;
+        return;
     }
 
     if (pos < 0 || pos > *n) {
-        return false;
+        return;
     }
 
     for (int i = *n; i > pos; i--) {
@@ -141,7 +204,7 @@ int main(void) {
 
 
 /*
-// 1.
+// 1. Rearrangement
 #include <stdio.h>
 
 int removeDuplicates(int arr[], int n);
@@ -186,6 +249,7 @@ int removeDuplicates(int arr[], int n) {
 
 
 /*
+// swapping
 #include <stdio.h>
 
 void reverseInPlace(int arr[], int n);
@@ -231,6 +295,7 @@ void reverseInPlace(int arr[], int n){
 
 
 /*
+// count even numbers
 #include <stdio.h>
 
 int countEven(int arr[], int n);
