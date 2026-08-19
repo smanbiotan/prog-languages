@@ -3,9 +3,9 @@ public class Employee {
     String name;
     String employeeID;
     String position;
-    int salary;
+    double salary;
 
-    public Employee(String name, String employeeID, String position, int salary) {
+    public Employee(String name, String employeeID, String position, double salary) {
 
         this.name = name;
         this.employeeID = employeeID;
