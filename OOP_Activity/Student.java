@@ -42,7 +42,6 @@ public class Student {
 
     public void displayStudentInfo() {
 
-        System.out.println("\n---STUDENT FINAL GRADE---");
         System.out.println("Name: " + name);
         System.out.printf("Average: %.2f%n", calculateAverage());
         System.out.println("Status: " + getStatus());
