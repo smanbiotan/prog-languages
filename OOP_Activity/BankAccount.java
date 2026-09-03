@@ -36,7 +36,6 @@ public class BankAccount {
 
     public void displayAccountInfo() {
 
-        System.out.print("---Bank Account---");
         System.out.print("Account Number: " + accountNumber);
         System.out.print("Account Name: " + accountName);
         System.out.print("Remaining Balance: " + balance);

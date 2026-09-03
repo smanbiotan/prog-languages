@@ -18,12 +18,15 @@ public class Main {
         System.out.print("Enter Final Grade: ");
         float finals = input.nextFloat();
 
-        Student studKirk = new Student(name, prelim, midterm, finals);
+        Student studKirk = new Student(
+                name,
+                prelim,
+                midterm,
+                finals);
 
         studKirk.displayStudentInfo();
-        studKirk.getStatus();
-        studKirk.getLetterGrade();
 
+        input.close();
     }
 
 

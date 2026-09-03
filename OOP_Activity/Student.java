@@ -20,9 +20,9 @@ public class Student {
     public String getStatus() {
 
         if(calculateAverage() >= 75) {
-            return "Status: PASSED";
+            return "PASSED";
         } else {
-            return "Status: FAILED";
+            return "FAILED";
         }
 
     }

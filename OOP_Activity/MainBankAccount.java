@@ -1,9 +1,7 @@
 import java.util.Scanner;
 
 public class MainBankAccount {
-
     public static void main(String[] args) {
-
         Scanner input = new Scanner(System.in);
 
         System.out.print("Enter Account Number: ");
@@ -13,20 +11,23 @@ public class MainBankAccount {
         String accountName = input.nextLine();
 
         System.out.print("Enter Initial Balance: ");
-        float balance = input.nextFloat();
+        double balance = input.nextDouble();
 
-        BankAccount bank1 = new BankAccount(
+        BankAccount account = new BankAccount(
                 accountNumber,
                 accountName,
                 balance
         );
 
         System.out.print("Enter Deposit Amount: ");
-        float deposit = input.nextFloat();
+        double depositAmount = input.nextDouble();
+        account.deposit(depositAmount);
 
-        bank1.deposit(deposit);
+        System.out.print("Enter Withdrawal Amount: ");
+        double withdrawAmount = input.nextDouble();
+        account.withdraw(withdrawAmount);
 
-        bank1.displayAccountInfo();
+        account.displayAccountInfo();
 
         input.close();
     }
