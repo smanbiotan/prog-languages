@@ -1,0 +1,18 @@
+Item Code   : ITM-001
+Item Name   : Keyboard
+Quantity    : 8
+Price       : 0.00
+Total Value : 0.00
+Status      : Restock
+Item Code   : ITM-002
+Item Name   : Mouse
+Quantity    : 15
+Price       : 0.00
+Total Value : 0.00
+Status      : Sufficient
+Item Code   : ITM-003
+Item Name   : Monitor
+Quantity    : 5
+Price       : 0.00
+Total Value : 0.00
+Status      : Restock

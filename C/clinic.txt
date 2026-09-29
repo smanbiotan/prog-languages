@@ -1,0 +1,21 @@
+
+CLINIC BILLING REPORT
+
+Patient ID : 251-00123
+ Patient Name : Robin Padilla
+ Consultation Fee : 5.25
+ Medicine Fee : 60.00
+ Laboratory Fee : 450.00
+ Gross Bill : 515.25
+ Discount : 0.00
+ Net Bill : 515.25
+ Category : Regular Bill
+Patient ID : 251-00321
+ Patient Name : Rodrigo Duterte
+ Consultation Fee : 4.25
+ Medicine Fee : 75.00
+ Laboratory Fee : 620.00
+ Gross Bill : 699.25
+ Discount : 0.00
+ Net Bill : 699.25
+ Category : Regular Bill
