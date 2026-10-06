@@ -1,324 +1,434 @@
 /*
-// swapping
+// Dynamic Integer Array Using malloc()
+// Possible problem: Create an array dynamically and calculate cubes
 #include <stdio.h>
+#include <stdlib.h>
 
-void swap(int arr[], int i, int j);
+int *makeCubes(int n) {
+    int *a = malloc(n * sizeof(int));
 
-int main() {
+    if (a == NULL)
+        return NULL;
 
-  int arr[] = {10, 20, 30, 40, 50};
-  int n = sizeof(arr) / sizeof(arr[0]);
-
-  printf("Before swap: ");
-  for(int i = 0; i < n; i++){
-      printf("%d ", arr[i]);
-  }
-  
-  swap(arr, 1, 3);
-
-  
-  printf("\nAfter swapped: ");
-    for(int i = 0; i < n; i++){
-      printf("%d ", arr[i]);
-  }
-
-  return 0;
-}
-
-void swap(int arr[], int i, int j){
-
-  int temp = arr[i];
-  arr[i] = arr[j];
-  arr[j] = temp;
-}
-*/
-
-/*
-// Traverse
-#include <stdio.h>
-
-void traverse(int arr[], int n);
-
-int main() {
-
-  int arr[] = {10, 20, 30, 40, 50};
-  int n = sizeof(arr) / sizeof(arr[0]);\
-
-  printf("Array: ");
-  traverse(arr, n);
-
-  return 0;
-}
-
-void traverse(int arr[], int n){
-
-  for(int i = 0; i < n; i++) {
-    printf("%d ", arr[i]);
-  }
-}
-*/
-
-
-/*
-// Test II — CER
-#include <stdio.h>
-
-// Scenario: a function meant to copy the first n values of source into
-// a fixed-size buffer of 10 integers.
-void copyFirstN(int source[], int n, int buffer[10]) {
-    for (int i = 0; i < n; i++) {   // FIX: changed i <= n to i < n
-        buffer[i] = source[i];
-    }
-}
-
-int main(void) {
-    int data[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    int buf[10];
-
-    copyFirstN(data, 10, buf);
-
-    printf("Copied buffer: ");
-    for (int i = 0; i < 10; i++) {
-        printf("%d ", buf[i]);
-    }
-    printf("\n");
-
-    return 0;
-}
-
-Claim: This program is not safe to run as written,
-it will cause a buffer overflow (undefined behavior), 
-corrupting memory beyond the bounds of both buf and data.
-
-Evidence:
-
-Loop condition i <= n runs 11 times (i = 0..10) instead of 10.
-buffer[10] only has valid indices 0–9, so buffer[10] = ... writes out of bounds.
-data[10] also only has valid indices 0–9, so source[10] reads out of bounds.
-
-Reasoning: This is an off-by-one bounds error — 
-for a size-10 array, the last valid index is 9, not 10, but <= lets the loop treat n itself as a valid index.
-That extra iteration reads garbage from outside data and writes it outside buf, both undefined behavior. 
-Fix: change i <= n to i < n.
-*/
-
-/*
-// 3. Rotation
-#include <stdio.h>
-
-void rotateLeft(int arr[], int n, int k) {
-    int i, j, temp;
-
-    if (n <= 0)
-        return;
-
-    k %= n;
-                   
-    for (i = 0, j = k - 1; i < j; i++, j--) {        // arr[] = {1, 2, 3, 4, 5}; k = 2;
-        temp = arr[i];     // temp = 1 value sa array   i = [0] which is value = 1, j = [1] which is value = 2
-        arr[i] = arr[j];   // arr[i] = 2               
-        arr[j] = temp;     // arr[j] = 1               // first traverse {2, 1, 3, 4, 5}
-    }
-
-    for (i = k, j = n - 1; i < j; i++, j--) {   // i = k which is (2); j = 5 - 1 which is = (4); 
-        temp = arr[i];        // temp = 3  value sa array   
-        arr[i] = arr[j];      // arr[i] = 5     
-        arr[j] = temp;        // arr[j] = 3     // second traverse {2, 1, 5, 4, 3}
-    }
-
-    for (i = 0, j = n - 1; i < j; i++, j--) {              // i = 0 which is value niya 2
-        temp = arr[i];    // temp = 2;   value sa array    // j = 5 - 1 which is = (4);              
-        arr[i] = arr[j];  // arr[i] = 3;
-        arr[j] = temp;    // arr[j] = 2;         // final traverse {3, 4, 5, 1, 2} so mao ni ang final result.
-    }                                                                                
-} 
-
-int main() {
-    int arr[] = {1, 2, 3, 4, 5};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    int k = 2;
-
-    rotateLeft(arr, n, k);
-
-    printf("Rotated array: ");
     for (int i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
+        a[i] = i * i * i;
     }
 
-    return 0;
-}
-*/
-
-/*
-// 2. Insertion
-#include <stdio.h>
-
-void insertAt(int arr[], int *n, int cap, int pos, int value) {
-
-  if (*n >= cap) {
-        return;
-    }
-
-    if (pos < 0 || pos > *n) {
-        return;
-    }
-
-    for (int i = *n; i > pos; i--) {
-        arr[i] = arr[i - 1];
-    }
-    arr[pos] = value;
-    (*n)++;
-    return true;
+    return a;
 }
 
 int main(void) {
-    int arr[5] = {1, 2, 3, 4};
     int n = 4;
-    int cap = 5;
 
-    printf("Before insert: ");
-    for (int i = 0; i < n; i++) printf("%d ", arr[i]);
-    printf("\n");
+    int *c = makeCubes(n);
 
-    if (insertAt(arr, &n, cap, 1, 99)) {
-        printf("Inserted 99 at position 1\n");
-    } else {
-        printf("Insert failed\n");
+    if (c == NULL)
+        return 1;
+
+    for (int i = 0; i < n; i++) {
+        printf("%d ", c[i]);
     }
 
-    printf("After insert: ");
-    for (int i = 0; i < n; i++) printf("%d ", arr[i]);
     printf("\n");
 
-    if (!insertAt(arr, &n, cap, 2, 42)) {
-        printf("Insert rejected: array is full (n=%d, cap=%d)\n", n, cap);
+    free(c);
+    c = NULL;
+
+    return 0;
+}
+*/
+
+/*
+// Singly Linked List — Complete Implementation
+// Possible problem: Insert, delete, print, and free a linked list
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+void insertHead(struct Node **head, int val) {
+    struct Node *n = malloc(sizeof *n);
+
+    if (!n)
+        return;
+
+    n->data = val;
+    n->next = *head;
+
+    *head = n;
+}
+
+void insertTail(struct Node **head, int val) {
+    struct Node *n = malloc(sizeof *n);
+
+    if (!n)
+        return;
+
+    n->data = val;
+    n->next = NULL;
+
+    if (*head == NULL) {
+        *head = n;
+        return;
     }
 
-    if (!insertAt(arr, &n, cap, 10, 7)) {
-        printf("Insert rejected: invalid position\n");
+    struct Node *cur = *head;
+
+    while (cur->next)
+        cur = cur->next;
+
+    cur->next = n;
+}
+
+int deleteByKey(struct Node **head, int key) {
+    struct Node *cur = *head;
+    struct Node *prev = NULL;
+
+    while (cur && cur->data != key) {
+        prev = cur;
+        cur = cur->next;
+    }
+
+    if (!cur)
+        return 0;
+
+    if (!prev)
+        *head = cur->next;
+    else
+        prev->next = cur->next;
+
+    free(cur);
+
+    return 1;
+}
+
+void printList(const struct Node *head) {
+    for (; head; head = head->next)
+        printf("%d -> ", head->data);
+
+    printf("NULL\n");
+}
+
+void freeList(struct Node **head) {
+    struct Node *cur = *head;
+
+    while (cur) {
+        struct Node *next = cur->next;
+
+        free(cur);
+
+        cur = next;
+    }
+
+    *head = NULL;
+}
+
+int main(void) {
+    struct Node *list = NULL;
+
+    insertTail(&list, 7);
+    insertTail(&list, 14);
+    insertTail(&list, 21);
+
+    insertHead(&list, 3);
+
+    printList(list);
+
+    deleteByKey(&list, 3);
+    deleteByKey(&list, 21);
+    deleteByKey(&list, 99);
+
+    printList(list);
+
+    freeList(&list);
+
+    return 0;
+}
+*/
+
+/*
+// Delete Last Node in Singly Linked List
+// Possible problem: Implement/fix deleteLast()
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+void deleteLast(struct Node **head) {
+
+    if (*head == NULL)
+        return;
+
+    if ((*head)->next == NULL) {
+        free(*head);
+        *head = NULL;
+        return;
+    }
+
+    struct Node *prev = *head;
+
+    while (prev->next->next != NULL)
+        prev = prev->next;
+
+    free(prev->next);
+
+    prev->next = NULL;
+}
+
+void printList(struct Node *head) {
+
+    while (head != NULL) {
+        printf("%d -> ", head->data);
+        head = head->next;
+    }
+
+    printf("NULL\n");
+}
+
+int main(void) {
+
+    struct Node *head = malloc(sizeof *head);
+    struct Node *second = malloc(sizeof *second);
+    struct Node *third = malloc(sizeof *third);
+
+    head->data = 10;
+    head->next = second;
+
+    second->data = 20;
+    second->next = third;
+
+    third->data = 30;
+    third->next = NULL;
+
+    printList(head);
+
+    deleteLast(&head);
+
+    printList(head);
+
+    while (head != NULL) {
+        struct Node *next = head->next;
+        free(head);
+        head = next;
     }
 
     return 0;
 }
 */
 
-
 /*
-// 1. Rearrangement
+// Array-Based Stack
+// Possible problem: Implement push(), pop(), peek()
 #include <stdio.h>
 
-int removeDuplicates(int arr[], int n);
+#define CAP 4
 
-int main() {
+struct Stack {
+    int data[CAP];
+    int top;
+};
 
-  int arr[] = {1, 3, 3, 2, 1, 5};
-  int n = sizeof(arr) / sizeof(arr[0]);
-
-  int newLen = removeDuplicates(arr, n);
-
-  for(int i = 0; i < newLen; i++){
-    printf("%d ", arr[i]);
-  }
-
-  return 0;
+void initStack(struct Stack *s) {
+    s->top = -1;
 }
 
-int removeDuplicates(int arr[], int n) {
-  int newLength = 0;
+int isEmpty(struct Stack *s) {
+    return s->top == -1;
+}
 
-  for(int i = 0; i < n; i++) { // sa outer loop i-check lang ang every element sa original array nimo.
-    int isDuplicate = 0;
+int push(struct Stack *s, int v) {
 
-    for(int j = 0; j < newLength; j++) { 
-      if(arr[i] == arr[j]){ // i-check ang original array which is arr[i] kung na saved na saimong unique portion 
-        isDuplicate = 1;
-        break;
-      }
+    if (s->top == CAP - 1)
+        return 0;
+
+    s->data[++s->top] = v;
+
+    return 1;
+}
+
+int pop(struct Stack *s, int *out) {
+
+    if (isEmpty(s))
+        return 0;
+
+    *out = s->data[s->top--];
+
+    return 1;
+}
+
+int peek(struct Stack *s, int *out) {
+
+    if (isEmpty(s))
+        return 0;
+
+    *out = s->data[s->top];
+
+    return 1;
+}
+
+int main(void) {
+
+    struct Stack s;
+
+    initStack(&s);
+
+    push(&s, 10);
+    push(&s, 20);
+    push(&s, 30);
+    push(&s, 40);
+
+    int value;
+
+    while (pop(&s, &value)) {
+        printf("Pop: %d\n", value);
     }
 
-    if(isDuplicate == 0){
-      arr[newLength] = arr[i];
-      newLength++;
-    }
-  }
-
-  return newLength;
-
+    return 0;
 }
 */
 
-
 /*
-// swapping
+// Linked Stack
+// Possible problem: Stack using dynamically allocated nodes
+
 #include <stdio.h>
+#include <stdlib.h>
 
-void reverseInPlace(int arr[], int n);
+struct SNode {
+    int data;
+    struct SNode *next;
+};
 
-int main() {
-
-  int arr[] = {1, 2, 3, 4, 5, 6, 9, -1};
-  int n = 8;
-
-  printf("Original values: ");
-  for(int i = 0; i < n; i++) {
-    printf("%d", arr[i]);
-  }
-
-  reverseInPlace(arr, n);
-
-  printf("\nReversed Values: ");
-    for(int i = 0; i < n; i++) {
-    printf("%d", arr[i]);
-  }
-
-return 0;
-
+int isEmpty(struct SNode *top) {
+    return top == NULL;
 }
 
-void reverseInPlace(int arr[], int n){
+int push(struct SNode **top, int v) {
 
-    int left = 0;
-    int right = n - 1;
-    int temp;
+    struct SNode *n = malloc(sizeof *n);
 
-    while(left < right) {
-      
-      temp = arr[left];
-      arr[left] = arr[right];
-      arr[right] = temp;
+    if (!n)
+        return 0;
 
-      left++;
-      right--;
+    n->data = v;
+    n->next = *top;
+
+    *top = n;
+
+    return 1;
+}
+
+int pop(struct SNode **top, int *out) {
+
+    if (isEmpty(*top))
+        return 0;
+
+    struct SNode *t = *top;
+
+    *out = t->data;
+
+    *top = t->next;
+
+    free(t);
+
+    return 1;
+}
+
+int main(void) {
+
+    struct SNode *top = NULL;
+
+    push(&top, 4);
+    push(&top, 5);
+    push(&top, 6);
+
+    int value;
+
+    while (pop(&top, &value)) {
+        printf("Pop: %d\n", value);
     }
+
+    return 0;
 }
 */
 
-
 /*
-// count even numbers
-git stash pop#include <stdio.h>
+// Linked Queue
+// Possible problem: Queue using front and rear
 
-int countEven(int arr[], int n);
+#include <stdio.h>
+#include <stdlib.h>
 
-int main() {
+struct QNode {
+    int data;
+    struct QNode *next;
+};
 
-  int arr[] = {1, 2, 3, 4, 5, 6, 9, -1};
-  int n = 8;
+struct Queue {
+    struct QNode *front;
+    struct QNode *rear;
+};
 
-  printf("%d", countEven(arr, n));
+int enqueue(struct Queue *q, int v) {
 
-  return 0;
+    struct QNode *n = malloc(sizeof *n);
+
+    if (!n)
+        return 0;
+
+    n->data = v;
+    n->next = NULL;
+
+    if (q->rear)
+        q->rear->next = n;
+    else
+        q->front = n;
+
+    q->rear = n;
+
+    return 1;
 }
 
-int countEven(int arr[], int n) {
+int dequeue(struct Queue *q, int *out) {
 
-  int count = 0;
+    if (!q->front)
+        return 0;
 
-  for(int i = 0; i < n; i++) {
-    if(arr[i] % 2 == 0) {
-      count++;
+    struct QNode *t = q->front;
+
+    *out = t->data;
+
+    q->front = t->next;
+
+    if (!q->front)
+        q->rear = NULL;
+
+    free(t);
+
+    return 1;
+}
+
+int main(void) {
+
+    struct Queue q = {NULL, NULL};
+
+    enqueue(&q, 10);
+    enqueue(&q, 20);
+    enqueue(&q, 30);
+
+    int value;
+
+    while (dequeue(&q, &value)) {
+        printf("Dequeue: %d\n", value);
     }
-  }
-    return count;
+
+    return 0;
 }
 */
